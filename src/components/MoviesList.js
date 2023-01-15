@@ -1,11 +1,11 @@
 import React from "react";
+import moviesList from "./MovieContext";
 
 class MoviesList extends React.Component {
 
   render() {
     
     // Get movies list using MoviesContext.
-
     return (
       <div id="movies-table">
         <style>{
@@ -20,9 +20,15 @@ class MoviesList extends React.Component {
             </tr>
           </thead>
           <tbody>
-              <tr id="table-row">
-                <td>Movie Title</td>
-              </tr>
+
+              {moviesList.map((val)=>{
+                return(
+                  <tr id="table-row" key={val.id}>
+                <td onClick={()=>this.props.function(val)} >{val.title}</td>
+                </tr>
+                )
+              })}
+
           </tbody>
         </table>
       </div>
